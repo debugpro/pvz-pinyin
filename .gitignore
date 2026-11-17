@@ -1,0 +1,8 @@
+.DS_Store
+/dist/assets/*
+!/dist/assets/.gitkeep
+/dist/audio/*
+!/dist/audio/.gitkeep
+/dist/write-assets/*
+!/dist/write-assets/.gitkeep
+/dist/*.json

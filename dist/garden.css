@@ -1,0 +1,25 @@
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}
+main{position:fixed;inset:0;display:grid;place-items:center}
+.canvas-wrap{position:relative;width:min(100vw,133.333333dvh);aspect-ratio:4/3;overflow:hidden}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:pointer}
+.controls{position:absolute;inset:0;pointer-events:none}
+.controls a,.controls button{position:absolute;display:block;pointer-events:auto;appearance:none;border:0;padding:0;
+  font-size:0;color:transparent;cursor:pointer;background-color:transparent;background-repeat:no-repeat;background-size:100% 100%;touch-action:none}
+.controls a:focus-visible,.controls button:focus-visible{outline:3px solid #fff4a6;outline-offset:2px}
+#garden-back{left:.9765625%;top:0;width:6.640625%;aspect-ratio:1;background-image:url('assets/garden/btn-back-up.webp')}
+#garden-shovel{left:9.765625%;top:.651042%;width:7.12890625%;aspect-ratio:1;touch-action:none;background-image:url('assets/garden/btn-shovel-up.webp')}
+#garden-prev,#garden-next{top:76.822917%;width:7.12890625%;aspect-ratio:1;background-image:url('assets/garden/btn-next-up.webp')}
+#garden-prev{left:-.09765625%;transform:scaleX(-1)}
+#garden-next{left:92.7734375%}
+@media (hover:hover){
+  #garden-back:hover{background-image:url('assets/garden/btn-back-over.webp')}
+  #garden-shovel:hover{background-image:url('assets/garden/btn-shovel-over.webp')}
+  #garden-prev:hover:not(:disabled),#garden-next:hover:not(:disabled){background-image:url('assets/garden/btn-next-over.webp')}
+}
+#garden-back.is-pressed{background-image:url('assets/garden/btn-back-down.webp')}
+#garden-shovel.is-pressed{background-image:url('assets/garden/btn-shovel-down.webp')}
+#garden-prev.is-pressed:not(:disabled),#garden-next.is-pressed:not(:disabled){background-image:url('assets/garden/btn-next-down.webp')}
+#garden-status{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);margin:0;opacity:0;pointer-events:none;
+  font:600 1rem system-ui,sans-serif;color:#fff;background:#321f15d9;border-radius:8px;padding:.5rem .75rem}
+#garden-status.error{opacity:1}

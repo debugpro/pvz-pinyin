@@ -1,0 +1,67 @@
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
+body{display:grid;place-items:center;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
+.shop-stage{position:relative;width:min(100vw,133.333333dvh);aspect-ratio:4/3;overflow:hidden;background:#101d20;touch-action:none}
+.shop-background{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.product-window{position:absolute;left:9.375%;top:20.56640625%;width:81.806640625%;height:65.598958333%;overflow:hidden;touch-action:none;cursor:grab}
+.product-window:active{cursor:grabbing}
+.product-track{position:absolute;left:-.119374478%;top:5.398967844%;width:171.302375552%;height:92.100039698%;transition:left .5s cubic-bezier(.333333,.666667,.666667,1);user-select:none}
+.product-track>img{display:block;width:100%;height:100%;pointer-events:none}
+.product-link{position:absolute;top:0;height:99.66594828%;width:15.81881533%;padding:0;border:0;background:transparent;cursor:pointer}
+.product-all{left:0;width:17.42160279%;height:99.96767241%}
+.product-one{left:21.42509%}
+.product-two{left:42.04530%}
+.product-three{left:63.11150%}
+.product-four{left:84.14634%;height:99.40732759%}
+.product-price{position:absolute;display:block;top:88.755%;height:11.244%;width:54.185%;background:url('assets/shop/price-world-up.png') center/100% 100%;touch-action:none}
+.price-all{left:24.28%;top:88.787%;width:51.6%;height:11.21%;background-image:url('assets/shop/price-all-up.png')}
+.price-one,.price-three{left:23.789%}
+.price-two{left:25.132%}
+.price-four{left:24.119%;top:88.746%;height:11.273%}
+@media (hover:hover){
+  .product-price:hover{background-image:url('assets/shop/price-world-over.png')}
+  .price-all:hover{background-image:url('assets/shop/price-all-over.png')}
+}
+.product-price.is-pressed{background-image:url('assets/shop/price-world-down.png')}
+.price-all.is-pressed{background-image:url('assets/shop/price-all-down.png')}
+.product-link:focus-visible{outline:3px solid #fff;outline-offset:-4px}
+.shop-control{position:absolute;display:block;border:0;padding:0;background:transparent;cursor:pointer}
+.shop-control:focus-visible{outline:3px solid #fff;outline-offset:-3px;border-radius:10px}
+.shop-back{left:.9765625%;top:1.3020833%;width:6.640625%;height:8.8541667%}
+.shop-close{left:84.5117188%;top:6.4583333%;width:5.859375%;height:7.2916667%}
+.shop-restore{left:81.2939453%;top:.2083333%;width:18.5546875%;height:6.1197917%}
+.shop-previous{left:0;top:47.1744792%;width:7.12890625%;height:9.50520833%}
+.shop-next{left:91.2548828%;top:44.8502604%;width:7.12890625%;height:9.50520833%}
+.shop-previous{background:url('assets/shop/previous-up.png') center/100% 100%}
+.shop-next{background:url('assets/shop/next-up.png') center/100% 100%}
+.shop-back{background:url('assets/shop/back-up.png') center/100% 100%}
+.shop-close{background:url('assets/shop/close-up.png') center/100% 100%}
+.shop-restore{background:url('assets/shop/restore-up.png') center/100% 100%}
+.shop-control,.choice-button{touch-action:none}
+@media (hover:hover){
+  .shop-previous:hover{background-image:url('assets/shop/previous-over.png')}
+  .shop-next:hover{background-image:url('assets/shop/next-over.png')}
+  .shop-back:hover{background-image:url('assets/shop/back-over.png')}
+  .shop-close:hover{background-image:url('assets/shop/close-over.png')}
+  .shop-restore:hover{background-image:url('assets/shop/restore-over.png')}
+  .choice-all:hover{background-image:url('assets/shop/choice-all-over.png')}
+  .choice-current:hover{background-image:url('assets/shop/choice-current-over.png')}
+}
+.shop-previous.is-pressed{background-image:url('assets/shop/previous-down.png')}
+.shop-next.is-pressed{background-image:url('assets/shop/next-down.png')}
+.shop-back.is-pressed{background-image:url('assets/shop/back-down.png')}
+.shop-close.is-pressed{background-image:url('assets/shop/close-down.png')}
+.shop-restore.is-pressed{background-image:url('assets/shop/restore-down.png')}
+.choice-all.is-pressed{background-image:url('assets/shop/choice-all-down.png')}
+.choice-current.is-pressed{background-image:url('assets/shop/choice-current-down.png')}
+.shop-control[hidden],.shop-message[hidden]{display:none}
+.shop-buy-choice[hidden]{display:none}
+.shop-buy-choice{position:absolute;inset:0;z-index:3}
+.shop-buy-choice img{display:block;width:100%;height:100%;pointer-events:none}
+.choice-button{position:absolute;top:56.88151042%;width:11.62109375%;height:6.77083333%;padding:0;border:0;background:transparent;cursor:pointer}
+.choice-all{left:37.67578125%}
+.choice-current{left:53.23730469%}
+.choice-all{background:url('assets/shop/choice-all-up.png') center/100% 100%}
+.choice-current{background:url('assets/shop/choice-current-up.png') center/100% 100%}
+.choice-button:focus-visible{outline:3px solid #fff;outline-offset:2px;border-radius:10px}
+.shop-message{position:absolute;z-index:4;left:25%;right:25%;bottom:5%;margin:0;padding:.55em .9em;border:3px solid #382511;border-radius:12px;background:#e8c485;color:#37220b;text-align:center;font-size:clamp(13px,2vw,24px);font-weight:900;box-shadow:0 4px 12px #0008}

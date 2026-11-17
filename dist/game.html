@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2f4a1f">
+  <title>冒险战斗关卡 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="preload" as="image" href="assets/gate/shop-over.png">
+  <link rel="preload" as="image" href="assets/gate/shop-down.png">
+  <link rel="preload" as="image" href="assets/gate/garden-over.png">
+  <link rel="preload" as="image" href="assets/gate/garden-down.png">
+  <link rel="preload" as="image" href="assets/gate/back-over.png">
+  <link rel="preload" as="image" href="assets/gate/back-down.png">
+  <link rel="stylesheet" href="game.css">
+  <script src="button-feedback.js" defer></script>
+  <script src="native-random-sort.js" defer></script>
+  <script src="gate-preview.js" defer></script>
+  <script src="gate-buy-panel.js" defer></script>
+  <script src="gate-captcha.js" defer></script>
+  <script src="webp-frame-decoder.js" defer></script>
+  <script src="game.js?v=20261117-card-layout" defer></script>
+  <script src="spelltest.js" defer></script>
+</head>
+<body>
+  <main>
+    <section id="level-select" class="level-select" aria-label="选择关卡">
+      <img class="gate-background" src="assets/gate/background.png" alt="">
+      <nav id="world-tabs" class="world-tabs" aria-label="选择世界"></nav>
+      <img id="gate-levels-image" class="gate-levels-image" alt="">
+      <div id="gate-locks" class="gate-locks" aria-hidden="true"></div>
+      <div id="level-grid" class="level-grid"></div>
+      <img class="gate-dave" src="assets/gate/dave.png" alt="">
+      <a class="gate-button gate-shop" href="shop.html" aria-label="商店"></a>
+      <a class="gate-button gate-garden" href="garden.html" aria-label="植物花园"></a>
+      <a class="gate-button gate-back" href="index.html" aria-label="返回封面"></a>
+      <div id="gate-buy-panel" class="gate-buy-panel" role="dialog" aria-modal="true" aria-label="世界购买面板" hidden>
+        <img id="gate-buy-base" class="gate-buy-base" alt="">
+        <canvas id="gate-buy-preview" class="gate-buy-preview"></canvas>
+        <canvas id="gate-buy-flower" class="gate-buy-flower" width="82" height="67"></canvas>
+        <button id="gate-buy-current" class="gate-buy-action" type="button" aria-label="购买当前世界"></button><span class="gate-buy-art gate-buy-current-art" aria-hidden="true"></span>
+        <button id="gate-buy-all" class="gate-buy-action" type="button" aria-label="购买全部世界"></button><span class="gate-buy-art gate-buy-all-art" aria-hidden="true"></span>
+        <button id="gate-buy-back" class="gate-buy-action" type="button" aria-label="返回选关"></button>
+        <p id="gate-buy-error" class="gate-buy-error" role="status" hidden></p>
+        <div id="gate-captcha" class="gate-captcha" role="dialog" aria-modal="true" aria-label="购买验证" hidden><div id="gate-captcha-scene" class="gate-captcha-scene"></div></div>
+      </div>
+      <div id="gate-mission" class="gate-mission" role="dialog" aria-modal="true" aria-label="需要完成上一关" hidden>
+        <img class="gate-mission-base" src="assets/gate/mission-base.webp" alt="">
+        <img id="gate-mission-label" class="gate-mission-label" alt="">
+        <button id="gate-mission-yes" type="button" aria-label="知道了"><img class="button-up" src="assets/gate/mission-yes-up.webp" alt=""><img class="button-over" src="assets/gate/mission-yes-over.webp" alt=""><img class="button-down" src="assets/gate/mission-yes-down.webp" alt=""></button>
+      </div>
+      <div id="gate-purchase-tip" class="gate-purchase-tip" role="dialog" aria-modal="true" aria-label="关卡提示" hidden>
+        <img id="gate-purchase-tip-man" alt="">
+        <img id="gate-purchase-tip-bubble" src="assets/gate/purchase-tip-bubble.svg" alt="">
+        <img id="gate-purchase-tip-image" alt="">
+        <img id="gate-purchase-tip-hand" src="assets/gate/purchase-tip-hand.webp" alt="">
+        <button id="gate-tip-next" type="button" aria-label="继续"></button>
+        <a id="gate-tip-buy" href="shop.html" aria-label="前往商店" hidden></a>
+        <button id="gate-tip-close" type="button" aria-label="返回选关" hidden></button>
+      </div>
+      <p id="gate-error" class="gate-error" hidden></p>
+      <p id="progress-warning" class="progress-warning" role="status" hidden>进度无法读取或保存，请检查浏览器存储设置。</p>
+    </section>
+    <section id="card-cover" class="card-cover" aria-label="关卡学习" hidden>
+      <img class="card-cover-base" src="assets/cardcover/base.webp" alt="">
+      <img id="card-cover-title" class="card-cover-title" alt="">
+      <button id="card-cover-back" class="card-cover-back" type="button" aria-label="返回选关"><img class="button-up" src="assets/cardcover/back.webp" alt=""><img class="button-down" src="assets/cardcover/back-down.webp" alt=""></button>
+      <a id="card-cover-learn" class="card-cover-learn" aria-label="学习"><img class="button-up" src="assets/cardcover/learn.webp" alt=""><img class="button-down" src="assets/cardcover/learn-down.webp" alt=""></a>
+      <a id="card-cover-practice" class="card-cover-practice" aria-label="练习" hidden><img class="button-up" src="assets/cardcover/practice.webp" alt=""><img class="button-down" src="assets/cardcover/practice-down.webp" alt=""></a>
+      <a id="card-cover-write" class="card-cover-write" aria-label="书写" hidden><img class="button-up" src="assets/cardcover/write.webp" alt=""><img class="button-down" src="assets/cardcover/write-down.webp" alt=""></a>
+      <button id="card-cover-play" class="card-cover-play" type="button" aria-label="开始游戏"><img class="button-up" src="assets/cardcover/play.webp" alt=""><img class="button-down" src="assets/cardcover/play-down.webp" alt=""></button>
+    </section>
+    <section id="learning-view" class="learning-view" aria-label="拼音学习" hidden>
+      <img class="learning-base" src="assets/learning/base.webp" alt="">
+      <div id="learning-strip" class="learning-strip"></div>
+      <button id="learning-back" class="learning-back" type="button" aria-label="返回"><img class="button-up" src="assets/learning/back-up.webp" alt=""><img class="button-down" src="assets/learning/back-down.webp" alt=""></button>
+      <button id="learning-previous" class="learning-previous" type="button" aria-label="上一页"><img class="button-up" src="assets/learning/previous.webp" alt=""><img class="button-down" src="assets/learning/previous-down.webp" alt=""></button>
+      <button id="learning-next" class="learning-next" type="button" aria-label="下一页"><img class="button-up" src="assets/learning/next.webp" alt=""><img class="button-down" src="assets/learning/next-down.webp" alt=""></button>
+      <div id="learning-confirm" class="learning-confirm" role="dialog" aria-modal="true" aria-label="退出学习" hidden>
+        <img src="assets/learning/confirm.webp" alt="">
+        <button id="learning-yes" type="button" aria-label="确定退出"><img class="button-up" src="assets/learning/confirm-yes-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-yes-down.webp" alt=""></button>
+        <button id="learning-cancel" type="button" aria-label="继续学习"><img class="button-up" src="assets/learning/confirm-cancel-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-cancel-down.webp" alt=""></button>
+      </div>
+    </section>
+    <section id="card-test" class="card-test" aria-label="拼音测试" hidden>
+      <img class="card-test-base" src="assets/cardtest/base.webp" alt="">
+      <img id="card-test-title" class="card-test-title" src="assets/cardtest/title.webp" alt="">
+      <div id="card-test-cards" class="card-test-cards"></div>
+      <p id="card-test-audio-hint" class="card-test-audio-hint" role="status" hidden>点击画面播放提示语音</p>
+      <button id="card-test-back" class="card-test-back" type="button" aria-label="返回"><img class="button-up" src="assets/learning/back-up.webp" alt=""><img class="button-down" src="assets/learning/back-down.webp" alt=""></button>
+      <div id="card-test-confirm" class="card-test-overlay" role="dialog" aria-modal="true" aria-label="退出测试" hidden>
+        <img src="assets/learning/confirm.webp" alt="">
+        <button id="card-test-yes" class="card-test-yes" type="button" aria-label="确定退出"><img class="button-up" src="assets/learning/confirm-yes-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-yes-down.webp" alt=""></button>
+        <button id="card-test-cancel" class="card-test-cancel" type="button" aria-label="继续测试"><img class="button-up" src="assets/learning/confirm-cancel-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-cancel-down.webp" alt=""></button>
+      </div>
+      <div id="card-test-result" class="card-test-overlay" role="dialog" aria-modal="true" aria-label="测试完成" hidden>
+        <img src="assets/cardtest/end-base.webp" alt="">
+        <canvas id="card-test-sunflower" class="card-test-sunflower" width="82" height="67" aria-hidden="true"></canvas>
+        <img class="card-test-end-foreground" src="assets/cardtest/end-foreground.svg" alt="">
+        <button id="card-test-write" class="card-test-write" type="button" aria-label="书写"><img class="button-up" src="assets/cardtest/end-write.webp" alt=""><img class="button-down" src="assets/learning-result/write-down.webp" alt=""></button>
+        <button id="card-test-play" class="card-test-play" type="button" aria-label="开始游戏"><img class="button-up" src="assets/cardtest/end-play.webp" alt=""><img class="button-down" src="assets/learning-result/play-down.webp" alt=""></button>
+      </div>
+    </section>
+    <section id="spell-test" class="spell-test" aria-label="拼读练习" hidden>
+      <img class="spell-test-base" src="assets/spelltest/base.webp" alt="">
+      <div id="spell-test-cards" class="spell-test-layer"></div>
+      <div id="spell-test-title" class="spell-test-title"></div>
+      <div id="spell-test-error" class="spell-test-error" role="alert" hidden>
+        <p>拼读题库加载失败</p><button id="spell-test-retry" type="button">重试</button>
+      </div>
+      <img id="spell-test-picture" class="spell-test-picture" alt="" hidden>
+      <button id="spell-test-sound" class="spell-test-sound" type="button" aria-label="重播发音"><img src="assets/spelltest/sound.webp" alt=""></button>
+      <button id="spell-test-back" class="spell-test-back" type="button" aria-label="返回"><img class="button-up" src="assets/learning/back-up.webp" alt=""><img class="button-down" src="assets/learning/back-down.webp" alt=""></button>
+      <button id="spell-test-prev" class="spell-test-prev" type="button" aria-label="上一题" hidden><img class="button-up" src="assets/learning/previous.webp" alt=""><img class="button-down" src="assets/learning/previous-down.webp" alt=""></button>
+      <button id="spell-test-next" class="spell-test-next" type="button" aria-label="下一题" hidden><img class="button-up" src="assets/learning/next.webp" alt=""><img class="button-down" src="assets/learning/next-down.webp" alt=""></button>
+      <div id="spell-test-end" class="spell-test-overlay" hidden>
+        <img src="assets/learning-result/spell-background.webp" alt="">
+        <canvas id="spell-test-sunflower" class="learning-result-sunflower" width="82" height="67" aria-hidden="true"></canvas>
+        <img class="learning-result-foreground" src="assets/learning-result/spell-foreground.svg" alt="">
+        <img class="learning-result-label" src="assets/learning-result/spell-label.svg" alt="">
+        <button id="spell-test-again" style="left:20.6494%;top:59.2904%;width:16.6016%;height:8.4635%" type="button" aria-label="再练一次"><img class="button-up" src="assets/learning-result/spell-again.webp" alt=""><img class="button-down" src="assets/learning-result/spell-again-down.webp" alt=""></button>
+        <button id="spell-test-write" style="left:41.8457%;top:59.2904%;width:16.6016%;height:8.4635%" type="button" aria-label="书写"><img class="button-up" src="assets/learning-result/write.webp" alt=""><img class="button-down" src="assets/learning-result/write-down.webp" alt=""></button>
+        <button id="spell-test-play" style="left:63.1787%;top:59.4206%;width:16.6016%;height:8.4635%" type="button" aria-label="开始游戏"><img class="button-up" src="assets/learning-result/play.webp" alt=""><img class="button-down" src="assets/learning-result/play-down.webp" alt=""></button>
+      </div>
+      <div id="spell-test-confirm" class="spell-test-overlay" role="dialog" aria-modal="true" aria-label="退出拼读" hidden>
+        <img src="assets/learning/confirm.webp" alt="">
+        <button id="spell-test-yes" class="card-test-yes" type="button" aria-label="确定退出"><img class="button-up" src="assets/learning/confirm-yes-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-yes-down.webp" alt=""></button>
+        <button id="spell-test-cancel" class="card-test-cancel" type="button" aria-label="继续练习"><img class="button-up" src="assets/learning/confirm-cancel-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-cancel-down.webp" alt=""></button>
+      </div>
+    </section>
+    <section id="practice-write" class="practice-write" aria-label="拼音书写" hidden>
+      <img class="practice-write-base" src="assets/write-practice/base.webp" alt="">
+      <canvas id="practice-write-canvas" width="1024" height="768" aria-label="拼音描写区域"></canvas>
+      <canvas id="practice-write-result-animation" width="330" height="380" hidden></canvas>
+      <div id="practice-write-error" class="writing-load-error" role="alert" hidden></div>
+      <button id="practice-write-back" class="practice-write-back" type="button" aria-label="返回"><img class="button-up" src="assets/learning/back-up.webp" alt=""><img class="button-down" src="assets/learning/back-down.webp" alt=""></button>
+      <div id="practice-write-end" class="practice-write-overlay" hidden>
+        <img src="assets/learning-result/writing-background.webp" alt="">
+        <canvas id="practice-write-sunflower" class="learning-result-sunflower" width="82" height="67" aria-hidden="true"></canvas>
+        <img class="learning-result-foreground" src="assets/learning-result/writing-foreground.svg" alt="">
+        <button id="practice-write-again" class="practice-write-again" type="button" aria-label="再写一次"><img class="button-up" src="assets/learning-result/writing-again.webp" alt=""><img class="button-down" src="assets/learning-result/writing-again-down.webp" alt=""></button>
+        <button id="practice-write-play" class="practice-write-play" type="button" aria-label="开始游戏"><img class="button-up" src="assets/learning-result/play.webp" alt=""><img class="button-down" src="assets/learning-result/play-down.webp" alt=""></button>
+      </div>
+      <div id="practice-write-confirm" class="practice-write-overlay" role="dialog" aria-modal="true" aria-label="退出书写" hidden>
+        <img src="assets/learning/confirm.webp" alt="">
+        <button id="practice-write-yes" class="card-test-yes" type="button" aria-label="确定退出"><img class="button-up" src="assets/learning/confirm-yes-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-yes-down.webp" alt=""></button>
+        <button id="practice-write-cancel" class="card-test-cancel" type="button" aria-label="继续书写"><img class="button-up" src="assets/learning/confirm-cancel-up.webp" alt=""><img class="button-down" src="assets/learning/confirm-cancel-down.webp" alt=""></button>
+      </div>
+    </section>
+    <section id="battle-view" class="battle-view" hidden>
+      <div class="battle-heading"><button id="back-button" type="button">← 返回选关</button><strong id="stage-label"></strong><span>听发音选拼音，答对后植物攻击</span></div>
+      <div class="canvas-wrap">
+        <canvas id="battle-canvas" width="1024" height="768" aria-label="植物大战僵尸拼音战斗场景"></canvas>
+        <div id="writing-overlay" class="writing-overlay" hidden>
+          <div class="writing-panel" role="dialog" aria-modal="true" aria-labelledby="writing-title">
+            <div class="writing-heading"><div><small>原版描写字形</small><h2 id="writing-title">描写拼音</h2></div><div class="writing-actions"><button id="writing-clear" type="button">清除笔迹</button></div></div>
+            <p id="writing-instruction">沿白色笔顺描写，经过全部检查点。可以分多笔完成。</p>
+            <canvas id="writing-canvas" width="1024" height="768" aria-label="拼音描写区域"></canvas>
+            <canvas id="writing-result-canvas" width="330" height="380" aria-label="书写结果动画" hidden></canvas>
+            <div id="writing-progress" class="writing-load-error" aria-live="polite" hidden><span id="writing-error-text"></span> <button id="writing-retry" type="button">重试</button></div>
+          </div>
+        </div>
+        <canvas id="writing-loss-overlay" width="1024" height="768" aria-label="失败结果" hidden></canvas>
+      </div>
+      <div class="battle-help">点底部拼音卡片答题；重叠时将鼠标移到露出的卡边可查看下层。键盘 1～6 可选卡，空格可重播发音。</div>
+    </section>
+  </main>
+</body>
+</html>

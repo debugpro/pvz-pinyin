@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101d20">
+  <title>商店 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="shop.css">
+  <script src="volume-settings.js" defer></script>
+  <script src="button-feedback.js" defer></script>
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <main class="shop-stage" aria-label="原版商店">
+    <img class="shop-background" src="assets/shop/background.png" alt="">
+    <div id="product-window" class="product-window" aria-label="世界商品">
+      <div id="product-track" class="product-track">
+        <img src="assets/shop/products.png" alt="" draggable="false">
+        <button class="product-link product-all" type="button" data-product="0" aria-label="购买全套内容"><span class="product-price price-all" aria-hidden="true"></span></button>
+        <button class="product-link product-one" type="button" data-product="1" aria-label="购买阳光花园"><span class="product-price price-one" aria-hidden="true"></span></button>
+        <button class="product-link product-two" type="button" data-product="2" aria-label="购买神秘埃及"><span class="product-price price-two" aria-hidden="true"></span></button>
+        <button class="product-link product-three" type="button" data-product="3" aria-label="购买海盗港湾"><span class="product-price price-three" aria-hidden="true"></span></button>
+        <button class="product-link product-four" type="button" data-product="4" aria-label="购买狂野西部"><span class="product-price price-four" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <a class="shop-control shop-back" href="game.html" aria-label="返回选关"></a>
+    <a class="shop-control shop-close" href="game.html" aria-label="关闭商店"></a>
+    <button id="shop-previous" class="shop-control shop-previous" type="button" aria-label="上一页" hidden></button>
+    <button id="shop-next" class="shop-control shop-next" type="button" aria-label="下一页"></button>
+    <button id="shop-restore" class="shop-control shop-restore" type="button" aria-label="恢复购买"></button>
+    <div id="shop-buy-choice" class="shop-buy-choice" role="dialog" aria-modal="true" aria-label="选择购买方式" hidden>
+      <img src="assets/shop/buy-choice.png" alt="原版戴夫购买提示：购买全套或只买本关">
+      <button class="choice-button choice-all" type="button" aria-label="购买全套"></button>
+      <button class="choice-button choice-current" type="button" aria-label="只买本关"></button>
+    </div>
+    <p id="shop-message" class="shop-message" role="status" hidden></p>
+  </main>
+</body>
+</html>

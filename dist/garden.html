@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2f4a1f">
+  <title>花园图鉴 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="garden.css">
+  <script src="volume-settings.js" defer></script>
+  <script src="button-feedback.js" defer></script>
+  <script src="garden.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="canvas-wrap">
+      <canvas id="garden-canvas" width="1024" height="768" aria-label="可种植的花园和植物卡片"></canvas>
+      <div class="controls">
+        <a id="garden-back" href="game.html" aria-label="返回选关"></a>
+        <button id="garden-shovel" type="button" aria-label="拖动铲子移走植物" aria-pressed="false">铲子</button>
+        <button id="garden-prev" type="button" aria-label="查看前面的植物卡">← 前一页</button>
+        <button id="garden-next" type="button" aria-label="查看后面的植物卡">后一页 →</button>
+      </div>
+    </div>
+    <p id="garden-status" role="status" aria-live="polite">正在加载花园…</p>
+  </main>
+</body>
+</html>

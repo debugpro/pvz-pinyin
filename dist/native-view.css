@@ -1,0 +1,11 @@
+.native-view{height:100dvh;overflow:hidden;background:#10130d}
+.native-view .topbar,.native-view .heading{display:none}
+.native-view main{max-width:none;width:100vw;height:100dvh;padding:0;display:grid;place-items:center}
+.native-view .stage{width:min(100vw,133.333333dvh);aspect-ratio:4/3;border:0;border-radius:0;box-shadow:none;background:#000}
+.native-view .stage canvas{width:100%;height:100%}
+.native-view #minigame-storage-warning{position:absolute;left:10%;right:10%;bottom:2%;margin:0;padding:.4em .6em;text-align:center;color:#fff;background:#50251ee6;border-radius:.4em;font:600 clamp(12px,1.7vw,18px) system-ui,sans-serif;pointer-events:none}
+.native-view #minigame-storage-warning[hidden]{display:none}
+.native-view .controls,.native-view #message{position:absolute;width:1px;height:1px;min-height:0;padding:0;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.native-view .overlay .panel{max-width:24rem;padding:1.2rem;background:#533b25e8;color:#fff5d1;border-color:#bb9558}
+.native-view .overlay .panel h2{font-size:1.6rem}
+.native-view .overlay .panel p{font-size:.95rem}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7f6035">
+  <title>僵尸组合 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="roll.css">
+  <link rel="stylesheet" href="native-view.css">
+  <script src="minigame-result.js" defer></script>
+  <script src="volume-settings.js" defer></script>
+  <script src="minigame-confirm.js" defer></script>
+  <script src="minigame-guide-art.js" defer></script>
+  <script src="minigame-help.js" defer></script>
+  <script src="pause-sliders.js" defer></script>
+  <script src="shuffle-pool.js" defer></script>
+  <script src="joint.js" defer></script>
+</head>
+<body class="native-view">
+  <header class="topbar"><a href="index.html">☀ 植物大战僵尸 · 拼音大冒险</a><nav><a href="game.html">战斗关卡</a><a href="match.html">僵尸配对</a><a href="pull.html">僵尸抓字</a></nav></header>
+  <main>
+    <div class="heading"><div><small>IPA 小游戏</small><h1>僵尸组合</h1></div><p>左边是完整拼音卡。依次点击两只僵尸，把它们携带的字符拼成卡上的拼音。</p></div>
+    <div class="stage"><canvas id="joint-canvas" width="1024" height="768" aria-label="僵尸组合游戏场景"></canvas>
+      <div id="overlay" class="overlay"><div class="panel"><h2 id="overlay-title">僵尸组合</h2><p id="overlay-text">每五秒出现一轮僵尸。先选声母，再选韵母，拼成左边的一张完整拼音卡。</p><button id="overlay-button" type="button" disabled>正在载入…</button></div></div>
+    </div>
+    <div class="controls"><button id="sound" type="button" disabled>♫ 音乐开</button><button id="pause" type="button" disabled>Ⅱ 暂停</button><button id="restart" type="button" disabled>重新开始</button><span id="progress">0 / 10 组</span></div>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>

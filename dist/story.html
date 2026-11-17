@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182614">
+  <title>剧情动画 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="story.css">
+  <script src="stage-fit.js" defer></script>
+  <script src="story.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html">☀ 植物大战僵尸 · 拼音大冒险</a>
+    <nav aria-label="其他页面"><a href="game.html">战斗关卡</a><a href="garden.html">植物花园</a><a href="roll.html">滚动拼读</a></nav>
+  </header>
+  <main>
+    <div class="heading"><div><small>原版 SWF 画面与配音</small><h1>剧情动画</h1></div><p>点击播放，或选择片段查看。动画帧与声音提取自 IPA。</p></div>
+    <nav id="chapters" class="chapters" aria-label="选择剧情片段"></nav>
+    <div class="screen"><img id="story-frame" alt="剧情动画画面"><div id="loading" class="loading" role="status">正在载入剧情…</div></div>
+    <div class="controls">
+      <button id="previous" type="button">← 上一段</button>
+      <button id="play" type="button" aria-label="播放">▶ 播放</button>
+      <button id="next" type="button">下一段 →</button>
+    </div>
+    <div class="timeline"><input id="seek" type="range" min="0" max="1" value="0" aria-label="剧情进度"><span id="time">0:00 / 0:00</span></div>
+    <p id="status" class="status" role="status"></p>
+    <audio id="narration" preload="metadata"></audio>
+  </main>
+</body>
+</html>

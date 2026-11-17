@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <title>植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="preload" as="image" href="assets/cover/settings-over.png">
+  <link rel="preload" as="image" href="assets/cover/settings-down.png">
+  <link rel="preload" as="image" href="assets/cover/start-over.png">
+  <link rel="preload" as="image" href="assets/cover/start-down.png">
+  <link rel="preload" as="image" href="assets/cover/continue-over.png">
+  <link rel="preload" as="image" href="assets/cover/continue-down.png">
+  <link rel="preload" as="image" href="assets/cover/restart-over.png">
+  <link rel="preload" as="image" href="assets/cover/restart-down.png">
+  <link rel="stylesheet" href="cover.css">
+  <script src="button-feedback.js" defer></script>
+  <script src="volume-settings.js" defer></script>
+  <script src="pause-sliders.js" defer></script>
+  <script src="webp-frame-decoder.js" defer></script>
+  <script src="cover.js" defer></script>
+  <script src="cover-help.js" defer></script>
+</head>
+<body>
+  <main class="cover-stage" aria-label="植物大战僵尸拼音大冒险封面">
+    <img class="cover-background" src="assets/cover/background.png" alt="">
+    <button class="cover-button settings" id="settings" aria-label="设置"></button>
+    <button class="cover-button start" id="start" aria-label="开始学习"></button>
+    <button class="cover-button continue" id="continue" aria-label="继续学习" hidden></button>
+    <button class="cover-button restart" id="restart" aria-label="重新开始" hidden></button>
+
+    <section class="cover-dialog" id="settings-dialog" role="dialog" aria-label="设置" aria-modal="true" hidden>
+      <img src="assets/cover/settings-panel.png" alt="">
+      <canvas id="cover-sliders" class="cover-sliders" width="1024" height="768" aria-label="音乐和音效音量滑块"></canvas>
+      <button class="dialog-hit settings-close" id="settings-close" aria-label="关闭设置"></button>
+      <button class="dialog-hit settings-help" id="settings-help" aria-label="帮助与产品说明"></button>
+      <a class="settings-link settings-protocol" href="http://tos.ea.com/legalapp/mobileeula/US/sc/OTHER/" target="_blank" rel="noopener noreferrer" aria-label="最终用户许可协议"></a>
+      <a class="settings-link settings-privacy" href="http://tos.ea.com/legalapp/WEBPRIVACY/US/sc/PC/" target="_blank" rel="noopener noreferrer" aria-label="隐私政策"></a>
+      <a class="settings-link settings-service" href="http://tos.ea.com/legalapp/WEBTERMS/US/sc/PC/" target="_blank" rel="noopener noreferrer" aria-label="服务条款"></a>
+      <button class="dialog-hit settings-share" id="settings-share" aria-label="使用数据分享"></button>
+    </section>
+
+    <section id="cover-help" class="cover-help" aria-label="帮助与产品说明" hidden>
+      <img class="cover-help-backdrop" src="assets/cover/help-backdrop.svg" alt="">
+      <div id="cover-help-index" class="cover-help-index">
+        <img src="assets/cover/help-index.webp" alt="">
+        <button id="cover-help-settings" class="cover-help-back" aria-label="返回设置"></button>
+        <div id="cover-help-entries"></div>
+      </div>
+      <div id="cover-share" class="cover-share" hidden>
+        <div class="cover-help-index">
+          <img src="assets/cover/help-share.webp" alt="">
+          <button id="cover-share-back" class="cover-help-back" aria-label="返回设置"></button>
+        </div>
+        <button id="cover-share-toggle" class="cover-share-toggle" aria-label="切换使用数据分享" aria-pressed="false"><img id="cover-share-image" alt=""></button>
+      </div>
+      <div id="cover-help-faq" class="cover-help-faq" hidden>
+        <img class="cover-faq-background" src="assets/cover/help-faq-background.svg" alt="">
+        <div id="cover-faq-scroll" class="cover-faq-scroll" tabindex="0" aria-label="常见问题内容"><img src="assets/cover/help-faq-content.webp" alt="常见问题"></div>
+        <img id="cover-faq-up" class="cover-faq-up" src="assets/cover/help-up.webp" alt="" hidden>
+        <img id="cover-faq-down" class="cover-faq-down" src="assets/cover/help-down.webp" alt="">
+        <button id="cover-faq-back" class="cover-faq-back" aria-label="返回帮助目录"><img src="assets/cover/help-back.webp" alt=""></button>
+      </div>
+    </section>
+    <section id="cover-help-movie" class="cover-help-movie" aria-label="游戏说明" hidden>
+      <img id="cover-help-movie-frame" alt="">
+      <canvas id="cover-help-movie-canvas" width="1088" height="817" hidden></canvas>
+      <div id="cover-help-movie-loading" class="cover-help-movie-loading" hidden>
+        <span id="cover-help-movie-loading-text">正在加载帮助…</span>
+        <button id="cover-help-movie-retry" type="button" hidden>点击重试</button>
+      </div>
+      <button id="cover-help-movie-touch" aria-label="下一页"></button>
+      <button id="cover-help-movie-back" aria-label="返回帮助目录"></button>
+      <button id="cover-help-movie-next" aria-label="下一页" hidden></button>
+      <button id="cover-help-movie-replay" aria-label="重新播放" hidden></button>
+      <button id="cover-help-movie-close" aria-label="关闭说明" hidden></button>
+    </section>
+    <section class="cover-dialog" id="restart-dialog" role="dialog" aria-label="确认重新开始" aria-modal="true" hidden>
+      <img src="assets/cover/restart-panel.png" alt="">
+      <button class="dialog-hit restart-cancel" id="restart-cancel" aria-label="取消重新开始"></button>
+      <button class="dialog-hit restart-confirm" id="restart-confirm" aria-label="确认删除旧的游戏记录并重新开始"></button>
+      <p id="restart-error" class="restart-error" role="status" hidden>无法完整清除进度，请检查浏览器存储设置。</p>
+    </section>
+  </main>
+</body>
+</html>

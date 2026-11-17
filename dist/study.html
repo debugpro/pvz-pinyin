@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#263c24">
+  <meta name="description" content="听发音、认拼音、守住草坪。基于《植物大战僵尸拼音大冒险》旧版 IPA 学习数据制作的网页游戏。">
+  <title>植物大战僵尸拼音大冒险 · 网页版</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="sun-glow" aria-hidden="true"></div>
+  <div class="leaf leaf-a" aria-hidden="true">✦</div>
+  <div class="leaf leaf-b" aria-hidden="true">✦</div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" id="brand-link" aria-label="返回首页">
+        <img src="assets/icon.png" alt="">
+        <span><strong>拼音大冒险</strong><small>Plants vs. Zombies · 网页版</small></span>
+      </a>
+      <div class="top-actions">
+        <a class="battle-top-link" href="game.html">战斗关卡</a>
+        <a class="battle-top-link" href="garden.html">植物花园</a>
+        <a class="battle-top-link" href="roll.html">滚动拼读</a>
+        <a class="battle-top-link" href="pull.html">僵尸抓字</a>
+        <a class="battle-top-link" href="match.html">僵尸配对</a>
+        <a class="battle-top-link" href="joint.html">僵尸组合</a>
+        <a class="battle-top-link" href="story.html">剧情动画</a>
+        <a class="battle-top-link" href="shop.html">商店</a>
+        <span class="progress-pill" id="overall-progress">已完成 0 / 16 课</span>
+        <button class="icon-button" id="sound-button" type="button" aria-label="关闭声音" title="声音开关">♫</button>
+      </div>
+    </header>
+
+    <main id="app" aria-live="polite"></main>
+
+    <footer class="footer">
+      <span>根据 1.0.7 IPA 中的拼音题库和音频制作</span>
+      <span>进度仅保存在当前浏览器</span>
+    </footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

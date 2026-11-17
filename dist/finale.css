@@ -1,0 +1,11 @@
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
+body{display:grid;place-items:center;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
+.finale-stage{position:relative;width:min(100vw,133.333333dvh);aspect-ratio:4/3;overflow:hidden;background:#000;touch-action:none}
+#finale-frame{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;pointer-events:none}
+#finale-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;padding:.55em 1.15em;border:3px solid #3d2a0f;border-radius:12px;background:#e8c882;color:#352514;font-size:clamp(16px,2.5vw,26px);font-weight:900;cursor:pointer}
+#finale-return{position:absolute;inset:0;z-index:1;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer}
+#finale-return:focus-visible{outline:4px solid #fff;outline-offset:-4px}
+#finale-error{position:absolute;left:15%;right:15%;top:45%;z-index:3;padding:1em;background:#2f2117;color:#fff;text-align:center}
+#finale-error button{display:block;margin:.8em auto 0;padding:.5em 1em;border:2px solid #bc9958;border-radius:10px;background:#f3d484;color:#3b2815;font:700 1rem system-ui;cursor:pointer}
+[hidden]{display:none!important}

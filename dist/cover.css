@@ -1,0 +1,80 @@
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
+body{display:grid;place-items:center}
+.cover-stage{position:relative;width:min(100vw,133.333333dvh);aspect-ratio:4/3;overflow:hidden;touch-action:none}
+.cover-background,.cover-dialog>img{display:block;width:100%;height:100%}
+button{cursor:pointer;border:0;color:transparent}
+.cover-button,.dialog-hit{position:absolute;display:block}
+.cover-button{padding:0;background-color:transparent;background-repeat:no-repeat;background-size:100% 100%;touch-action:none}
+.cover-button[hidden],.cover-dialog[hidden]{display:none}
+.cover-button:focus-visible,.dialog-hit:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.settings{left:65.698%;top:71.322%;width:8.984%;height:10.156%;background-image:url('assets/cover/settings.png')}
+.start,.continue{left:37.646%;top:70.117%;width:24.707%;height:13.542%}
+.start{background-image:url('assets/cover/start.png')}
+.continue{background-image:url('assets/cover/continue.png')}
+.restart{left:40.864%;top:84.342%;width:16.602%;height:8.464%;background-image:url('assets/cover/restart.png')}
+@media (hover:hover){
+  .settings:hover{background-image:url('assets/cover/settings-over.png')}
+  .start:hover{background-image:url('assets/cover/start-over.png')}
+  .continue:hover{background-image:url('assets/cover/continue-over.png')}
+  .restart:hover{background-image:url('assets/cover/restart-over.png')}
+}
+.settings.is-pressed{background-image:url('assets/cover/settings-down.png')}
+.start.is-pressed{background-image:url('assets/cover/start-down.png')}
+.continue.is-pressed{background-image:url('assets/cover/continue-down.png')}
+.restart.is-pressed{background-image:url('assets/cover/restart-down.png')}
+.cover-dialog{position:absolute;inset:0;z-index:5}
+.cover-dialog>img{pointer-events:none}
+.dialog-hit{padding:0;background:transparent}
+.settings-close{left:69.4%;top:15%;width:6.3%;height:8.5%}
+.cover-sliders{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none}
+.restart-cancel{left:38.1%;top:55.8%;width:24.1%;height:12%}
+.restart-confirm{left:67%;top:57.8%;width:17.1%;height:10%}
+.restart-error{position:absolute;left:20%;right:15%;top:70%;text-align:center;color:#fff;background:#6b241c;font-size:clamp(12px,1.5vw,18px)}
+.restart-error[hidden]{display:none}
+
+.settings-help,.settings-link{position:absolute;left:26.953%;width:46.577%;height:6.25%;background:transparent}
+.settings-help{top:39.974%}.settings-protocol{top:47.084%}.settings-privacy{top:54.375%}.settings-service{top:61.016%}
+.cover-help,.cover-help-movie{position:absolute;inset:0;z-index:7;overflow:hidden}
+.cover-help[hidden],.cover-help [hidden],.cover-help-movie[hidden],.cover-help-movie [hidden]{display:none}
+.cover-help-backdrop{position:absolute;inset:0;width:100%;height:100%}
+.cover-help-index{position:absolute;left:23.7061%;top:14.3164%;width:51.9531%;height:68.1706%}
+.cover-help-index>img{position:absolute;inset:0;width:100%;height:100%}
+.cover-help button,.cover-help-movie button{position:absolute;padding:0;border:0;background:transparent;cursor:pointer}
+.cover-help-back{left:5.451%;top:0;width:11.842%;height:12.037%}
+.cover-help-entry{left:3.797%;width:93.036%;height:6.876%}
+.cover-help-faq{position:absolute;inset:0}
+.cover-faq-background{position:absolute;left:23.584%;top:16.1328%;width:51.9531%;height:60.2799%}
+.cover-faq-scroll{position:absolute;left:23.584%;top:28.763%;width:48.8281%;height:43.3594%;overflow-y:auto;overscroll-behavior:contain;touch-action:none;scrollbar-width:none}
+.cover-faq-scroll{cursor:grab}.cover-faq-scroll.dragging{cursor:grabbing;user-select:none}
+.cover-faq-scroll::-webkit-scrollbar{display:none}.cover-faq-scroll img{display:block;width:92.4%;height:auto;margin-left:6.2%;margin-top:-1.4%}
+.cover-faq-up,.cover-faq-down{position:absolute;left:71.577%;width:2.9297%;height:4.2969%;pointer-events:none}
+.cover-faq-up{top:25.638%}.cover-faq-down{top:70.43%}
+.cover-faq-back{left:26.416%;top:15.02%;width:6.1523%;height:8.2031%}
+.cover-faq-back img{width:100%;height:100%;display:block}
+.cover-help-movie img,.cover-help-movie canvas{position:absolute;top:0;max-width:none;pointer-events:none}
+.cover-help-movie-loading{position:absolute;left:23.73%;top:31.77%;width:52.54%;height:36.46%;display:flex;flex-direction:column;gap:.6em;align-items:center;justify-content:center;background:#7b542d;border:.3rem solid #f1d68b;border-radius:1rem;color:#fff;font-size:clamp(14px,2.5vw,30px);pointer-events:none}
+.cover-help-movie-loading #cover-help-movie-retry{position:static;color:#fff;font:inherit;text-decoration:underline;pointer-events:auto}
+.cover-help-movie.is-loading #cover-help-movie-back{background:url('assets/game/help-loading-back-g1-up.webp') center/100% 100% no-repeat}
+.cover-help-movie.is-loading[data-help-group="2"] #cover-help-movie-back{background-image:url('assets/game/help-loading-back-g2-up.webp')}
+#cover-help-movie-touch{inset:0;width:100%;height:100%}
+#cover-help-movie-back{left:.9033%;top:.6771%;width:6.6406%;height:8.8542%}
+#cover-help-movie-next{left:91.572%;top:45.247%;width:7.129%;height:9.505%}
+.minigame-help-movie #cover-help-movie-back{background:url('assets/minigame-help/help-back-up.webp') center/100% 100% no-repeat}
+.minigame-help-movie #cover-help-movie-next{background:url('assets/minigame-help/help-next-up.webp') center/100% 100% no-repeat}
+@media (hover:hover){
+  .minigame-help-movie #cover-help-movie-back:hover{background-image:url('assets/minigame-help/help-back-over.webp')}
+  .minigame-help-movie #cover-help-movie-next:hover{background-image:url('assets/minigame-help/help-next-over.webp')}
+}
+.minigame-help-movie #cover-help-movie-back.is-pressed{background-image:url('assets/minigame-help/help-back-down.webp')}
+.minigame-help-movie #cover-help-movie-next.is-pressed{background-image:url('assets/minigame-help/help-next-down.webp')}
+#cover-help-movie-replay{left:28.433%;top:48.685%;width:16.602%;height:8.464%}
+#cover-help-movie-close{left:58.125%;top:48.685%;width:16.602%;height:8.464%}
+
+.settings-share{left:26.953%;top:68.346%;width:46.577%;height:6.25%}
+.cover-share{position:absolute;inset:0}.cover-share-toggle{left:62.0068%;top:67.3047%;width:10.7422%;height:7.03125%}
+.cover-share-toggle img{width:100%;height:100%;display:block}
+.cover-slide{position:absolute;inset:0;z-index:20;overflow:hidden;pointer-events:auto}
+.cover-slide-backdrop{position:absolute;inset:0;width:100%;height:100%}
+.cover-slide-window{position:absolute;left:23.2421875%;top:13.9388%;width:53.41797%;height:69.4011%;overflow:hidden}
+.cover-slide-page{position:absolute;left:-43.511%;top:-20.085%;width:187.202%;height:144.09%;pointer-events:none;clip-path:inset(13.9388% 23.33984% 16.6601% 23.2421875%)}

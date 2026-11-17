@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#355527">
+  <title>僵尸配对 · 植物大战僵尸拼音大冒险</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="roll.css">
+  <link rel="stylesheet" href="native-view.css">
+  <script src="minigame-result.js" defer></script>
+  <script src="volume-settings.js" defer></script>
+  <script src="minigame-confirm.js" defer></script>
+  <script src="minigame-guide-art.js" defer></script>
+  <script src="minigame-help.js" defer></script>
+  <script src="pause-sliders.js" defer></script>
+  <script src="shuffle-pool.js" defer></script>
+  <script src="match.js?v=20261117-guide-click" defer></script>
+</head>
+<body class="native-view">
+  <header class="topbar"><a href="index.html">☀ 植物大战僵尸 · 拼音大冒险</a><nav><a href="game.html">战斗关卡</a><a href="pull.html">僵尸抓字</a><a href="roll.html">滚动拼读</a></nav></header>
+  <main>
+    <div class="heading"><div><small>IPA 小游戏</small><h1>僵尸配对</h1></div><p>翻开僵尸携带的字母牌。连续选中两张相同的牌即可消除，别让僵尸越过左侧防线。</p></div>
+    <div class="stage"><canvas id="match-canvas" width="1024" height="768" aria-label="僵尸配对游戏场景"></canvas>
+      <div id="overlay" class="overlay"><div class="panel"><h2 id="overlay-title">僵尸配对</h2><p id="overlay-text">每五秒出现一轮僵尸。点击牌面，找出两个相同字母。</p><button id="overlay-button" type="button" disabled>正在载入…</button></div></div>
+    </div>
+    <div class="controls"><button id="sound" type="button" disabled>♫ 音乐开</button><button id="pause" type="button" disabled>Ⅱ 暂停</button><button id="restart" type="button" disabled>重新开始</button><span id="progress">0 / 14 轮</span></div>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
